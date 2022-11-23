@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seventh Chalange</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        width: 250px;
+        height: 20px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      button {
+        width: 60px;
+        height: 30px;
+        border-style: none;
+        border-radius: 12px;
+        background-color: antiquewhite;
+      }
+      .msg_sucess {
+        color: green;
+        margin-bottom: 10px;
+      }
+      .msg_error {
+        color: red;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <input type="password" id="password" />
+      <div id="msg"></div>
+    </div>
+    <button id="submit">submit</button>
+    <script>
+      const passwordEl = document.getElementById("password");
+      const submitEl = document.getElementById("submit");
+      const msg = document.getElementById("msg");
+
+      submitEl.addEventListener("click", () => {
+        if (passwordEl.value !== "") {
+          if (passwordEl.value.length < 10) {
+            msg.innerText = "password is too short";
+            msg.classList.add("msg_error");
+            passwordEl.style.borderColor = "red";
+          } else if (passwordEl.value.length > 12) {
+            msg.innerText = "password is too long";
+            msg.classList.add("msg_error");
+            passwordEl.style.borderColor = "red";
+          } else {
+            msg.innerText = "Sucessful";
+            msg.style.color = "green";
+            passwordEl.style.borderColor = "green";
+          }
+        } else {
+          msg.innerText = "enter password";
+          msg.classList.add("msg_error");
+          passwordEl.style.borderColor = "red";
+        }
+      });
+    </script>
+  </body>
+</html>
